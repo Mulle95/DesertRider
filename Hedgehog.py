@@ -1,3 +1,5 @@
+#FIXA SKIT LINJE 446!!!!!!!!!!!!!
+
 import pygame
 
 import random
@@ -8,14 +10,20 @@ pygame.mixer.init()
 
 pygame.font.init()
 
-
-
 #Variables
 background_colour = (0, 0, 0)
 
 font1 = pygame.font.SysFont('Arial', 25)
 
-font2 = pygame.font.SysFont('Arial', 45)
+font2 = pygame.font.SysFont('Bytesized-regular', 45)
+
+
+
+font_score = pygame.font.SysFont('Bytesized-regular', 75)
+
+font_ded = pygame.font.SysFont('Bytesized-regular', 100)
+
+font_ded3 = pygame.font.SysFont('Bytesized-regular', 50)
 
 text_surface16 = font1.render("KM/H", True, "white")
 
@@ -29,11 +37,19 @@ C1 = (225, 225, 0)
 
 C2 = (255, 127, 0)
 
-text_surfacet = font2.render("P R E S S  S P A C E  T O  S T A R T", True, C1)
+Guh = 255, 0, 0
 
-text_surfacetd = font2.render("P R E S S  S P A C E  T O  S T A R T", True, C2)
+Gih = 255, 255, 255
 
-title = True
+text_surfacet = font2.render("PRESS SPACE TO START", True, C1)
+
+text_surfacetd = font2.render("PRESS SPACE TO START", True, C2)
+
+font_deded = font_ded3.render("Press Space To Return To Menu", True, Gih)
+
+font_dedes = font_ded.render(".GAME OVER.", True, Guh)
+
+
 
 Colour_1 = (235, 235, 235)
 
@@ -64,31 +80,13 @@ stone4 = pygame.transform.scale(stone4, (86/1.5, 72/1.5))
 stone5 = pygame.image.load("stone5.png")
 stone5 = pygame.transform.scale(stone5, (54/1.5, 48/1.5))
 
-s = 0
+Colour_5 = (0, 0, 0)
 
-v = 0
-
-a = 0
-
-f = 0
-
-shake = 2
-
-k = 100
-
-l = 0
-
-cary = 270
-
-caryD = 0
 
 running = True
 
-stoneas = [(-150, 100, stone1), (-150, 100, stone1), (-165, 50, stone2), (-165, 50, stone2), (-350, 100, stone3), (-230, 68, stone4), (-350, 100, stone3), (-230, 68, stone4), (-230, 68, stone4), (-230, 68, stone4)]
 
-stones = [(-150, 100, stone1), (-150, 100, stone1), (-165, 50, stone2), (-165, 50, stone2), (-350, 100, stone3), (-230, 68, stone4), (-350, 100, stone3), (-230, 68, stone4), (-230, 68, stone4), (-230, 68, stone4)]
 
-# Load car and change size.
 imageM = pygame.image.load("bilM.png")
 imageM = pygame.transform.scale(imageM, (1223/7, 553/7))
 
@@ -98,94 +96,76 @@ imageW = pygame.transform.scale(imageW, (1223/7, 553/7))
 imageS = pygame.image.load("bilS.png")
 imageS = pygame.transform.scale(imageS, (1223/7, 553/7))
 
-image = imageM
-
-sandx = 0
-
+enemy = pygame.image.load("enemy.png")
+enemy = pygame.transform.scale(enemy, (1223/7, 553/7))
 
 
-# Rectangles...
-pygame.draw.rect(screen, Colour_3, pygame.Rect(0, 350, 500, 50))
-
-pygame.draw.rect(screen, Colour_3, pygame.Rect(0, 65, 500, 50))
-
-pygame.draw.rect(screen, Colour_1, pygame.Rect(s + 25, 230, 50, 10))
-
-pygame.draw.rect(screen, Colour_1, pygame.Rect(s + 125, 230, 50, 10))
-
-pygame.draw.rect(screen, Colour_1, pygame.Rect(s + 225, 230, 50, 10))
-
-pygame.draw.rect(screen, Colour_1, pygame.Rect(s + 325, 230, 50, 10))
-
-pygame.draw.rect(screen, Colour_1, pygame.Rect(s + 425, 230, 50, 10))
-
-pygame.draw.rect(screen, Colour_2, pygame.Rect(0, 115, 500, 250))
-
-# Game title.
-pygame.display.set_caption('kar gem')
 
 
-# Fill background.
-screen.fill(background_colour)
+
+
 
 title_surface = pygame.image.load("title.png")
 
+smoke = pygame.Surface((10, 10))
+
+smoke.set_alpha(8.5)
+
+smoke.fill((120, 120, 120))
+
+#
+score = 0
+gameover = False
+sandx = 0
+image = imageM
+stoneas = [(-150, 100, stone1), (-150, 100, stone1), (-165, 50, stone2), (-165, 50, stone2), (-350, 100, stone3), (-230, 68, stone4), (-350, 100, stone3), (-230, 68, stone4), (-230, 68, stone4), (-230, 68, stone4)]
+stones = [(-150, 100, stone1), (-150, 100, stone1), (-165, 50, stone2), (-165, 50, stone2), (-350, 100, stone3), (-230, 68, stone4), (-350, 100, stone3), (-230, 68, stone4), (-230, 68, stone4), (-230, 68, stone4)]
+s = 0
+v = 0
+a = 0
+f = 0
+shake = 2
+k = 100
+l = 0
+cary = 270
+caryD = 0
+enemyx = -300
+title = True
+#
+
+pygame.display.set_caption('kar gem')
+
 
 # ---
-if title == True:
 
-    pygame.mixer.music.load("The changeling.mp3")
+pygame.mixer.music.load("8bit blues.mp3")
 
-    pygame.mixer.music.play(-1) 
+pygame.mixer.music.play(-1) 
 
-    pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.set_volume(0.5)
 
-    while title:
+
+while running:
+
+    if gameover == True:
+        pygame.draw.rect(screen, Colour_5, pygame.Rect(0, 0, 880, 600))
+
+        score_surface = font_score.render(f"Score: {int(score)}", True, (255,255,255))
+        screen.blit(score_surface, (100, 175))
+
+        screen.blit(font_dedes, (100, 50))
+        screen.blit(font_deded, (50, 475))
+
+    elif title == True:
         screen.fill(background_colour)
 
         screen.blit(title_surface, (0, 0))
 
-        screen.blit(text_surfacet, (100, 540))
-        screen.blit(text_surfacetd, (103, 540))
+        screen.blit(text_surfacet, (155, 540))
+        screen.blit(text_surfacetd, (158, 540))
 
 
-        # Shows everything on the screen
-        pygame.display.flip()
-
-
-        # FPS
-        clk.tick (60)
-        for event in pygame.event.get():
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    title = False
-
-            if event.type == pygame.QUIT:
-                title = False
-                running = False
-
-
-if title == False:
-
-    pygame.mixer.music.load("Riders on the storm.mp3")
-
-    pygame.mixer.music.play(-1) 
-
-    pygame.mixer.music.set_volume(0.5)
-
-    smoke = pygame.Surface((10, 10))
-
-    smoke.set_alpha(8.5)
-
-    smoke.fill((120, 120, 120))
-
-   
-
-
-    while running:
-
-        
+    else:
 
         # Rectangles...
         pygame.draw.rect(screen, Colour_2, pygame.Rect(0, 115+50, 800, 250))
@@ -239,14 +219,17 @@ if title == False:
         # Put the car on screen.
         screen.blit(image, (k, cary+l))
 
+        screen.blit(enemy, (enemyx, 175))
+
 
         # The car/velocities/friction bullshit logic.
         if v != 0:
+            turnv = v/15*2
             if caryD < 0:
-                cary = cary-1
+                cary = cary-turnv
                 image = imageW
             if caryD > 0:
-                cary = cary+1
+                cary = cary+turnv
                 image = imageS
             if caryD == 0:
                 image = imageM
@@ -281,6 +264,19 @@ if title == False:
             v = 0
             shake = 0
 
+        # --- SCORE SYSTEM ---
+        dt = clk.get_time() / 1000   # seconds since last frame
+
+        wrong_side = False
+
+        # Upper lane = wrong side
+        if cary < 230:
+            wrong_side = True
+
+        # Gain points per second while driving wrong side
+        if wrong_side and v > 0:
+            score += 50 * dt * (v/15)
+
         if v == 0:
             
             caryD = 0
@@ -297,6 +293,24 @@ if title == False:
         
         if s < -99:
             s = 0
+
+        # 10..2 ev => 2..10 => 0..8
+        # 0..15 v 
+        # ((1 - v/15)*8 ) +2 => 10..2
+        enemyv = ((1 - v/15)*8 ) +2
+        enemyx = enemyx - enemyv-v
+
+        if enemyx < -700: 
+            enemyx = random.randint(1700,  5000)
+
+        if k+153 > enemyx  and k < enemyx + 153 and ( (cary+11 > 186 and cary+11 < 233) or ( cary+58 > 186 and cary+58 < 233)):
+                gameover = True
+
+        #pygame.draw.rect(screen, (255, 0, 0), (k+153, cary+58, 10, 10))
+        #pygame.draw.rect(screen, (255, 0, 0), (k+153, cary+11, 10, 10))
+
+        #pygame.draw.rect(screen, (255, 0, 0), (enemyx+10, 233, 10, 10))
+        #pygame.draw.rect(screen, (255, 0, 0), (enemyx+10, 186, 10, 10))
 
         for i, (x, y, surface) in enumerate(stones):
             x = x - v
@@ -365,9 +379,72 @@ if title == False:
 
         #smoke.set_alpha(smoke.get_alpha()-1)
 
-        # Controlling the car
-        for event in pygame.event.get():
 
+        pygame.draw.circle(screen, Colour_4, (710, 83), 80)
+
+        score_surface = font_score.render(f"Score: {int(score)}", True, (255,255,255))
+        #screen.blit(score_surface, (20, 20))
+
+        screen.blit(text_surface16, (685, 110))
+
+        screen.blit(text_surface1, (640, 70))
+
+        screen.blit(text_surface5, (699, 10))
+    
+        screen.blit(text_surface10, (754, 70))
+
+        vink = math.radians(v/15*235-225)
+
+        pygame.draw.line(screen, Colour_2, (710, 80), (710 + math.cos(vink)*50, 80 + math.sin(vink)*50), 10)
+
+        pygame.draw.circle(screen, Colour_2, (713, 83), 10)
+
+    # Shows everything on the screen
+    pygame.display.flip()
+
+    # Controlling the car
+    for event in pygame.event.get():
+
+        if gameover == True:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    gameover = False
+                    title = True
+
+                    pygame.mixer.music.load("8bit blues.mp3")
+                    pygame.mixer.music.play(-1) 
+                    pygame.mixer.music.set_volume(0.5)
+                    score = 0
+                    gameover = False
+                    sandx = 0
+                    image = imageM
+                    stoneas = [(-150, 100, stone1), (-150, 100, stone1), (-165, 50, stone2), (-165, 50, stone2), (-350, 100, stone3), (-230, 68, stone4), (-350, 100, stone3), (-230, 68, stone4), (-230, 68, stone4), (-230, 68, stone4)]
+                    stones = [(-150, 100, stone1), (-150, 100, stone1), (-165, 50, stone2), (-165, 50, stone2), (-350, 100, stone3), (-230, 68, stone4), (-350, 100, stone3), (-230, 68, stone4), (-230, 68, stone4), (-230, 68, stone4)]
+                    s = 0
+                    v = 0
+                    a = 0
+                    f = 0
+                    shake = 2
+                    k = 100
+                    l = 0
+                    cary = 270
+                    caryD = 0
+                    enemyx = -300
+                    title = True
+
+        elif title == True:
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    title = False
+                    pygame.mixer.music.load("Riders on 8bit.mp3")
+                    pygame.mixer.music.queue("Break on 8bit.mp3")
+
+                    pygame.mixer.music.play(1) 
+
+                    pygame.mixer.music.set_volume(0.5)
+        else:           
+                
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
                     caryD = -1 
@@ -390,32 +467,9 @@ if title == False:
                 if event.key == pygame.K_SPACE:
                     a = 0
 
+        # Quit the game
+        if event.type == pygame.QUIT:
+            running = False
 
-            # Quit the game
-            if event.type == pygame.QUIT:
-                running = False
-
-
-
-        pygame.draw.circle(screen, Colour_4, (710, 83), 80)
-
-        screen.blit(text_surface16, (685, 110))
-
-        screen.blit(text_surface1, (640, 70))
-
-        screen.blit(text_surface5, (699, 10))
-    
-        screen.blit(text_surface10, (754, 70))
-
-        vink = math.radians(v/15*235-225)
-
-        pygame.draw.line(screen, Colour_2, (710, 80), (710 + math.cos(vink)*50, 80 + math.sin(vink)*50), 10)
-
-        pygame.draw.circle(screen, Colour_2, (713, 83), 10)
-
-        # Shows everything on the screen
-        pygame.display.flip()
-
-
-        # FPS
-        clk.tick (60)
+    # FPS
+    clk.tick (60)
