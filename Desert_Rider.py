@@ -94,7 +94,7 @@ imageW = pygame.transform.scale(imageW, (1223/7, 553/7))
 imageS = pygame.image.load("CarS.png")
 imageS = pygame.transform.scale(imageS, (1223/7, 553/7))
 
-enemy = pygame.image.load("enemy.png")
+enemy = pygame.image.load("Enemy.png")
 enemy = pygame.transform.scale(enemy, (1223/7, 553/7))
 
 title_surface = pygame.image.load("Title.png")
