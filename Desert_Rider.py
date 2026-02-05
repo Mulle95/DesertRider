@@ -64,7 +64,7 @@ clk = pygame.time.Clock()
 
 screen = pygame.display.set_mode((800, 600))
 
-sand = pygame.image.load("sand.png")
+sand = pygame.image.load("Sand.png")
 
 stone1 = pygame.image.load("stone1.png")
 stone1 = pygame.transform.scale(stone1, (150/1.5, 123/1.5))
