@@ -141,7 +141,7 @@ title = False
 
 timger = pygame.USEREVENT + 1
 
-music = ["8bit i love you.mp3", "the 8bit ship.mp3", "8bit days.mp3", "light my 8bit.mp3", "Riders on 8bit.mp3"]
+music = ["8Bit i love you.mp3", "8Bit ship.mp3", "8Bit days.mp3", "8Bit my fire.mp3", "8Bit on the storm.mp3"]
 
 musicpos = 0
 
@@ -151,7 +151,7 @@ MUSIC_ENDED = pygame.USEREVENT + 2
 pygame.display.set_caption('Desert Rider')
 
 
-pygame.mixer.music.load("8bit blues.mp3")
+pygame.mixer.music.load("8Bit blues.mp3")
 
 pygame.mixer.music.play(-1) 
 
@@ -602,7 +602,7 @@ while running:
                 if event.key == pygame.K_SPACE:
 
 
-                    pygame.mixer.music.load("8bit blues.mp3")
+                    pygame.mixer.music.load("8Bit blues.mp3")
 
                     pygame.mixer.music.play(-1) 
 
