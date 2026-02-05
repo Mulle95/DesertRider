@@ -5,13 +5,9 @@ import random
 import math
 
 
-
-
-
 pygame.mixer.init()
 
 pygame.font.init()
-
 
 
 background_colour = (0, 0, 0)
@@ -193,7 +189,7 @@ while running:
 
 
         pygame.draw.rect(screen, Colour_5, pygame.Rect(0, 0, 880, 600))
-        
+
 
         screen.blit(highscore_surface, (100, 275))
 
