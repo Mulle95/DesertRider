@@ -141,6 +141,12 @@ title = False
 
 timger = pygame.USEREVENT + 1
 
+music = ["8bit i love you.mp3", "the 8bit ship.mp3", "8bit days.mp3", "light my 8bit.mp3", "Riders on 8bit.mp3"]
+
+musicpos = 0
+
+MUSIC_ENDED = pygame.USEREVENT + 2
+
 
 pygame.display.set_caption('Desert Rider')
 
@@ -150,6 +156,8 @@ pygame.mixer.music.load("8bit blues.mp3")
 pygame.mixer.music.play(-1) 
 
 pygame.mixer.music.set_volume(0.5)
+
+pygame.mixer.music.set_endevent(MUSIC_ENDED)
 
 
 pygame.time.set_timer(timger, 3000)
@@ -210,6 +218,7 @@ while running:
         screen.blit(text_surfacet, (155, 540))
 
         screen.blit(text_surfacetd, (158, 540))
+
 
     elif Mulle == True:
         
@@ -592,10 +601,6 @@ while running:
 
                 if event.key == pygame.K_SPACE:
 
-                    gameover = False
-
-                    title = True
-
 
                     pygame.mixer.music.load("8bit blues.mp3")
 
@@ -603,6 +608,10 @@ while running:
 
                     pygame.mixer.music.set_volume(0.5)
 
+
+                    gameover = False
+
+                    title = True
 
                     score = 0
 
@@ -638,6 +647,8 @@ while running:
 
                     title = True
 
+                    musicpos = 0
+
 
         elif title == True:
             
@@ -645,25 +656,37 @@ while running:
 
                 if event.key == pygame.K_SPACE:
 
+
                     title = False
 
 
-                    pygame.mixer.music.load("8bit i love you.mp3")
-
-                    pygame.mixer.music.queue("the 8bit ship.mp3")
-
-                    pygame.mixer.music.queue("8bit days.mp3")
-
-                    pygame.mixer.music.queue("light my 8bit.mp3")
-
-                    pygame.mixer.music.queue("Riders on 8bit.mp3")
+                    pygame.mixer.music.load(music[musicpos])
 
 
-                    pygame.mixer.music.play(1) 
+                    musicpos = musicpos + 1
+
+
+                    pygame.mixer.music.play() 
 
                     pygame.mixer.music.set_volume(0.5)
 
-        else:           
+
+        else:    
+
+            if event.type == MUSIC_ENDED:
+
+                pygame.mixer.music.load(music[musicpos])
+
+                pygame.mixer.music.play()   
+
+
+                musicpos = musicpos + 1
+
+
+                if musicpos >= len(music):
+
+                    musicpos = 0
+
                 
             if event.type == pygame.KEYDOWN:
 
@@ -701,6 +724,13 @@ while running:
                 if event.key == pygame.K_SPACE:
 
                     a = 0
+
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_LSHIFT:
+
+                    pygame.mixer.music.stop()
 
 
         if event.type == pygame.QUIT:
