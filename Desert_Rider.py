@@ -85,13 +85,13 @@ Colour_5 = (0, 0, 0)
 
 running = True
 
-imageM = pygame.image.load("bilM.png")
+imageM = pygame.image.load("CarM.png")
 imageM = pygame.transform.scale(imageM, (1223/7, 553/7))
 
-imageW = pygame.image.load("bilW.png")
+imageW = pygame.image.load("CarW.png")
 imageW = pygame.transform.scale(imageW, (1223/7, 553/7))
 
-imageS = pygame.image.load("bilS.png")
+imageS = pygame.image.load("CarS.png")
 imageS = pygame.transform.scale(imageS, (1223/7, 553/7))
 
 enemy = pygame.image.load("enemy.png")
@@ -170,7 +170,7 @@ def load_highscore():
         with open("highscore.txt", "r") as f:
 
             return int(f.read())
-        
+
 
     except:
 
@@ -221,7 +221,7 @@ while running:
 
 
     elif Mulle == True:
-        
+
         pygame.draw.rect(screen, Colour_5, pygame.Rect(0, 0, 880, 600))
 
 
@@ -286,7 +286,7 @@ while running:
 
         screen.blit(sand, (sandx + 256*4, 400))
 
-        
+
         for(x, y, surface) in stones:
             screen.blit(surface, (x, y))
 
@@ -394,7 +394,7 @@ while running:
 
 
         if v == 0:
-            
+
             caryD = 0
 
 
@@ -413,7 +413,7 @@ while running:
 
         s = s - v
 
-        
+
         if s < -99:
 
             s = 0
@@ -430,7 +430,7 @@ while running:
 
 
         if k+153 > enemyx  and k < enemyx + 153 and ( (cary+11 > 186 and cary+11 < 233) or ( cary+58 > 186 and cary+58 < 233)):
-                
+
                 gameover = True
 
 
@@ -447,7 +447,7 @@ while running:
             if x < -100:
 
                 ny =  random.randint(0, 100)
-        
+
                 stones[i] = (840 + random.randint(0, 900), ny , surface )
 
 
@@ -464,7 +464,7 @@ while running:
             if x < -100:
 
                 ny =  random.randint(400, 550)
-        
+
                 stoneas[i] = (840 + random.randint(0, 900), ny , surface )
 
 
@@ -480,7 +480,7 @@ while running:
 
             sandx = 0
 
-        
+
         if v < 1:
 
             smoke.set_alpha(0)
@@ -567,7 +567,7 @@ while running:
 
 
         pygame.draw.circle(screen, Colour_4, (710, 83), 80)
-        
+
 
         score_surface = font_score.render(f"Score: {int(score)}", True, (255,255,255))
 
@@ -651,7 +651,7 @@ while running:
 
 
         elif title == True:
-            
+
             if event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_SPACE:
@@ -671,9 +671,10 @@ while running:
                     pygame.mixer.music.set_volume(0.5)
 
 
-        else:    
+        else:
 
             if event.type == MUSIC_ENDED:
+
 
                 pygame.mixer.music.load(music[musicpos])
 
@@ -687,7 +688,7 @@ while running:
 
                     musicpos = 0
 
-                
+
             if event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_w:
@@ -733,8 +734,15 @@ while running:
                     pygame.mixer.music.stop()
 
 
-        if event.type == pygame.QUIT:
+    if event.type == pygame.KEYDOWN:
+
+        if event.key == pygame.K_ESCAPE:
+
             running = False
+
+
+    if event.type == pygame.QUIT:
+        running = False
 
 
     clk.tick (60)
