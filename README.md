@@ -19,4 +19,5 @@ Shift to switch music.
 
 <img width="800" height="600" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/6a3055bf-d0a5-4e5b-a1ef-a03c89a70301" />
 
-<img width="800" height="600" alt="Screenshot (5)" src="https://github.com/user-attachments/assets/ff31135f-165a-49db-ba32-1add8da04050" />
+<img width="800" height="600" alt="Screenshot (6)" src="https://github.com/user-attachments/assets/a4dec9d3-c1ef-4b42-8a49-cc68330d0918" />
+
