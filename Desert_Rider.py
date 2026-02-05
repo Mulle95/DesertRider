@@ -97,7 +97,7 @@ imageS = pygame.transform.scale(imageS, (1223/7, 553/7))
 enemy = pygame.image.load("enemy.png")
 enemy = pygame.transform.scale(enemy, (1223/7, 553/7))
 
-title_surface = pygame.image.load("title.png")
+title_surface = pygame.image.load("Title.png")
 
 smoke = pygame.Surface((10, 10))
 
