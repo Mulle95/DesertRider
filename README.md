@@ -11,7 +11,7 @@ Space to accelerate
 ### Run Instructions
 
 ```python
-  python Hedgehog.py
+  python Desert_Rider.py
 ```
 ### Preview
 <img width="800" height="600" alt="Screenshot (1)" src="https://github.com/user-attachments/assets/eff8a533-9222-448d-bf0a-e0ec8d30140e" />
