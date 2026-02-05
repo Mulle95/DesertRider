@@ -560,7 +560,7 @@ while running:
 
             smoke.set_alpha(8.5*15)
 
-        
+
         screen.blit(smoke,(k+random.randint(-20, -2), cary+20+random.randint(-5, +5)) )
 
         screen.blit(smoke,(k+random.randint(-20, -2), cary+20+random.randint(-5, +5)) )
