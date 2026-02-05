@@ -14,15 +14,15 @@ background_colour = (0, 0, 0)
 
 font1 = pygame.font.SysFont('Arial', 25)
 
-font2 = pygame.font.SysFont('Bytesized-regular', 45)
+font2 = pygame.font.SysFont('BytesizedRegular', 45)
 
-font_score = pygame.font.SysFont('Bytesized-regular', 75)
+font_score = pygame.font.SysFont('BytesizedRegular', 75)
 
-font_ded = pygame.font.SysFont('Bytesized-regular', 100)
+font_ded = pygame.font.SysFont('BytesizedRegular', 100)
 
-font_ded3 = pygame.font.SysFont('Bytesized-regular', 50)
+font_ded3 = pygame.font.SysFont('BytesizedRegular', 50)
 
-eat_a_can = pygame.font.SysFont('Bytesized-regular', 50)
+eat_a_can = pygame.font.SysFont('BytesizedRegular', 50)
 
 text_surface16 = font1.render("KM/H", True, "white")
 
