@@ -66,19 +66,19 @@ screen = pygame.display.set_mode((800, 600))
 
 sand = pygame.image.load("Sand.png")
 
-stone1 = pygame.image.load("stone1.png")
+stone1 = pygame.image.load("Stone1.png")
 stone1 = pygame.transform.scale(stone1, (150/1.5, 123/1.5))
 
-stone2 = pygame.image.load("stone2.png")
+stone2 = pygame.image.load("Stone2.png")
 stone2 = pygame.transform.scale(stone2, (137/1.5, 105/1.5))
 
-stone3 = pygame.image.load("stone3.png")
+stone3 = pygame.image.load("Stone3.png")
 stone3 = pygame.transform.scale(stone3, (106/1.5, 75/1.5))
 
-stone4 = pygame.image.load("stone4.png")
+stone4 = pygame.image.load("Stone4.png")
 stone4 = pygame.transform.scale(stone4, (86/1.5, 72/1.5))
 
-stone5 = pygame.image.load("stone5.png")
+stone5 = pygame.image.load("Stone5.png")
 stone5 = pygame.transform.scale(stone5, (54/1.5, 48/1.5))
 
 Colour_5 = (0, 0, 0)
