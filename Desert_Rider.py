@@ -648,9 +648,16 @@ while running:
                     title = False
 
 
-                    pygame.mixer.music.load("Riders on 8bit.mp3")
+                    pygame.mixer.music.load("8bit i love you")
 
-                    pygame.mixer.music.queue("Break on 8bit.mp3")
+                    pygame.mixer.music.queue("the 8bit ship")
+
+                    pygame.mixer.music.queue("8bit days")
+
+                    pygame.mixer.music.queue("light my 8bit")
+
+                    pygame.mixer.music.queue("Riders on 8bit")
+                    
 
                     pygame.mixer.music.play(1) 
 
